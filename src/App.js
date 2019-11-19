@@ -14,7 +14,8 @@ class App extends React.Component {
 
   getUsers = () => {
     axios({
-      url: `${databaseUrl}/api/users`,
+      // url: `${databaseUrl}/api/users`,
+      url: 'https://project3-backend-test.herokuapp.com/api/users',
       method: 'get'
     })
       .then(users => {

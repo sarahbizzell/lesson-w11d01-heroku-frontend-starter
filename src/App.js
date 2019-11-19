@@ -9,6 +9,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.getUsers()
+  }
+
+  getUsers = () => {
     axios({
       url: `${databaseUrl}/api/users`,
       method: 'get'
@@ -24,7 +28,7 @@ class App extends React.Component {
     return (
       <div className="App" >
         <header className="App-header">
-          <p>Project 3 Starter. Let's git it!</p>
+          <h1>Project 3 Starter. Let's git it!</h1>
         </header>
       </div>
     );

@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-const databaseUrl = process.env.HEROKU_DB_URL
+// const databaseUrl = process.env.HEROKU_DB_URL
+const databaseUrl = 'https://project3-backend-test.herokuapp.com'
 
 class App extends React.Component {
   state = {
@@ -14,8 +15,8 @@ class App extends React.Component {
 
   getUsers = () => {
     axios({
-      // url: `${databaseUrl}/api/users`,
-      url: 'https://project3-backend-test.herokuapp.com/api/users',
+      url: `${databaseUrl}/api/users`,
+      // url: 'https://project3-backend-test.herokuapp.com/api/users',
       method: 'get'
     })
       .then(users => {

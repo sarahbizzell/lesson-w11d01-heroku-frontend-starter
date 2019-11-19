@@ -1,68 +1,118 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ![GA Logo](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) 
 
-## Available Scripts
+# Project 3 Frontend Starter Code
 
-In the project directory, you can run:
+#### Project 3 Starter Code Links
 
-### `npm start`
+- [Node/Express Backend Starter App](https://git.generalassemb.ly/Interapt/project3-backend-starter)
+- [React Frontend Starter App](https://git.generalassemb.ly/Interapt/project3-frontend-starter)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Create Free Heroku Account
 
-### `npm test`
+[Heroku Homepage](https://devcenter.heroku.com/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![](https://i.imgur.com/hPAtUfN.png)
 
-### `npm run build`
+## Install the Heroku CLI
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Install Docs](https://devcenter.heroku.com/articles/heroku-cli)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Express Backend Set-up
 
-### `npm run eject`
+[Heroku Node/Express Deployment Docs](https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Your `config/config/json` is set-up to access the Heroku Postgres production database instance.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```js
+{
+  "development": {
+    "database": "project3-backend-development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres"
+  }
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Also syncing the Sequelize models so that the tables will automatically be created:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```js
+var db = require('./models');
+db.sequelize.sync();
+```
 
-## Learn More
+- This app also has `cors` and `nodemon` installed.
+- [Sequelize Cheatsheet](https://gist.github.com/vapurrmaid/a111bf3fc0224751cb2f76532aac2465)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Test the endpoint with Postman
 
-### Code Splitting
+![](https://i.imgur.com/MhV0c4U.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### Connect to your production server Terminal
 
-### Analyzing the Bundle Size
+Run this command from your back end app folder: `heroku run bash`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+From here you can run commands like `sequelize db:migrate` or `sequelize db:seed:all`
 
-### Making a Progressive Web App
+https://project3-backend-test.herokuapp.com/users
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+<br>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Connect Heroku DB to PG Admin
 
-### Deployment
+#### Heroku Stuff
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- Right click on `Servers` and select Create > Server...
 
-### `npm run build` fails to minify
+![](https://i.imgur.com/JWvG2Nz.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- On your Heroku App dashboard, click on Heroku Postgres
+
+![](https://i.imgur.com/5l5Gq6s.png)
+
+- On the next screen choose Settings, then View Database Credentials
+
+![](https://i.imgur.com/iikLgfj.png)
+
+#### PG Admin Stuff
+
+- In the `Name` field, enter the name of your database.
+
+![](https://i.imgur.com/Lzp0zlC.png)
+
+- In the `Connection` Tab:
+	
+	- `Hostname/Address` is your Heroku Postgres `Host`
+	- `Maintenance Database` is your Heroku Postgres `Database`
+	- `Username` is your Heroku Postgres `User`
+
+![](https://i.imgur.com/hQQB2MM.png)
+
+
+<br>
+
+
+## React Frontend Set-up
+
+Your app has axios installed.
+
+#### Database URL
+
+For security, we'll add the Heroku Postgres URL
+add heroku env variable to heroku dashboard
+
+<br>
+
+## Additional Resources
+
+
+- [React Relative Paths](https://create-react-app.dev/docs/deployment#building-for-relative-paths)

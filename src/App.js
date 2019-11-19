@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-const herokuUrl = 'https://project3-backend-test.herokuapp.com'
+const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
 
 class App extends React.Component {
   state = {
@@ -10,7 +10,7 @@ class App extends React.Component {
 
   componentDidMount() {
     axios({
-      url: `${herokuUrl}/api/users`,
+      url: `${databaseUrl}/api/users`,
       method: 'get'
     })
       .then(users => {
@@ -24,18 +24,7 @@ class App extends React.Component {
     return (
       <div className="App" >
         <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-        </p>
-          <p>Test</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-        </a>
+          <p>Project 3 Starter. Let's git it!</p>
         </header>
       </div>
     );

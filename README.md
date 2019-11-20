@@ -15,7 +15,7 @@
 
 - Fork and clone `https://git.generalassemb.ly/Interapt/project3-backend-starter`
 - `cd` into the app and `npm install`
-- From the command line run `createdb project3-backend-development`
+- From the command line run `createdb project3-backend-dev`
 - Run `npm start`. 
 
 
@@ -31,7 +31,7 @@ You have two starter endpoints:
 ```js
 {
   "development": {
-    "database": "project3-backend-development",
+    "database": "project3-backend-dev",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

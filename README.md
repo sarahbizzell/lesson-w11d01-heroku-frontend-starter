@@ -9,21 +9,22 @@
 
 <br>
 
-## Create Free Heroku Account
-
-[Heroku Homepage](https://devcenter.heroku.com/)
-
-![](https://i.imgur.com/hPAtUfN.png)
-
-## Install the Heroku CLI
-
-[Install Docs](https://devcenter.heroku.com/articles/heroku-cli)
-
-<br>
-
 ## Express Backend Set-up
 
-[Heroku Node/Express Deployment Docs](https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true)
+#### To Install
+
+- Fork and clone `https://git.generalassemb.ly/Interapt/project3-backend-starter`
+- `cd` into the app and `npm install`
+- From the command line run `createdb project3-backend-development`
+- Run `npm start`. 
+
+
+#### Starter End Points
+
+You have two starter endpoints:
+
+- `GET` `api/users`
+- `POST` `api/users`
 
 - Your `config/config/json` is set-up to access the Heroku Postgres production database instance.
 
@@ -41,6 +42,49 @@
 }
 ```
 
+- This app also has `cors` and `nodemon` installed.
+- [Sequelize Cheatsheet](https://gist.github.com/vapurrmaid/a111bf3fc0224751cb2f76532aac2465)
+
+
+#### Test the endpoints with Postman
+
+![](https://i.imgur.com/MhV0c4U.png)
+
+<br>
+
+## React Frontend Set-up
+
+#### To Install
+
+- Fork and clone `https://git.generalassemb.ly/Interapt/project3-frontend-starter`
+- `cd` into the app and `npm install`
+- Run `npm start`. You should see this in the browser:
+
+![](https://i.imgur.com/7CLkUI4.png)
+
+
+#### Axios
+
+The app has axios installed. You have one method called `getUsers` that hits your Express backend `api/users`. Check the browser console for the response.
+
+
+<br>
+
+# Heroku 
+
+## Create Free Heroku Account
+
+[Heroku Homepage](https://devcenter.heroku.com/)
+
+![](https://i.imgur.com/hPAtUfN.png)
+
+## Install the Heroku CLI
+
+[Install Docs](https://devcenter.heroku.com/articles/heroku-cli)
+
+[Heroku Node/Express Deployment Docs](https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true)
+
+
 - Also syncing the Sequelize models so that the tables will automatically be created:
 
 ```js
@@ -48,25 +92,7 @@ var db = require('./models');
 db.sequelize.sync();
 ```
 
-- This app also has `cors` and `nodemon` installed.
-- [Sequelize Cheatsheet](https://gist.github.com/vapurrmaid/a111bf3fc0224751cb2f76532aac2465)
-
-
-#### Test the endpoint with Postman
-
-![](https://i.imgur.com/MhV0c4U.png)
-
-#### Connect to your production server Terminal
-
-Run this command from your back end app folder: `heroku run bash`
-
-From here you can run commands like `sequelize db:migrate` or `sequelize db:seed:all`
-
-https://project3-backend-test.herokuapp.com/users
-
-
 <br>
-
 ## Connect Heroku DB to PG Admin
 
 #### Heroku Stuff
@@ -82,6 +108,10 @@ https://project3-backend-test.herokuapp.com/users
 - On the next screen choose Settings, then View Database Credentials
 
 ![](https://i.imgur.com/iikLgfj.png)
+
+#### Database URL
+
+For security, we'll add the Heroku Postgres URL add heroku env variable to heroku dashboard
 
 #### PG Admin Stuff
 
@@ -100,17 +130,13 @@ https://project3-backend-test.herokuapp.com/users
 
 <br>
 
+#### Connect to your production server Terminal
 
-## React Frontend Set-up
+Run this command from your back end app folder: `heroku run bash`
 
-Your app has axios installed.
+From here you can run commands like `sequelize db:migrate` or `sequelize db:seed:all`
 
-#### Database URL
-
-For security, we'll add the Heroku Postgres URL
-add heroku env variable to heroku dashboard
-
-<br>
+https://project3-backend-test.herokuapp.com/users
 
 ## Additional Resources
 

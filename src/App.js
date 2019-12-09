@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 // const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
-const databaseUrl = 'https://heroku-deployment-backend-sb.herokuapp.com/'
-
+const databaseUrl = 'https://heroku-deployment-backend-sb.herokuapp.com'
+const herokuBackendUrl = 'https://heroku-deployment-backend2.herokuapp.com'
+const databaseUrl = process.env.NODE_ENV === 'production' ? herokuBackendUrl : 'http://localhost:3000'
 class App extends React.Component {
   state = {
     users: []
